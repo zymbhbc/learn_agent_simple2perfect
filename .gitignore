@@ -1,0 +1,28 @@
+# Runtime data, caches, secrets, local DBs and large model outputs live here.
+.local/
+
+# Environment files with local secrets (API keys, tokens, etc.).
+# .env.example is the documented version and is safe to share.
+.env
+!.env.example
+
+# Python build and cache artifacts.
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and tool state.
+.venv/
+.uv/
+
+# IDE and editor state.
+.vscode/
+.idea/
+*.swp
+
+# OS metadata.
+.DS_Store
+Thumbs.db

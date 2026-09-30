@@ -110,6 +110,8 @@
 
 ## 阶段 1：第一个 smolagents Agent
 
+具体会话与验收安排见 [阶段 1: 第一个 ToolCallingAgent 学习安排](stage-01-first-tool-calling-agent.md)。
+
 ### 目标
 
 从使用者角度掌握 smolagents 的最小运行方式，建立结构化工具调用的直观认识。
@@ -137,6 +139,8 @@
 - 能说明 `max_steps` 对运行终止的影响。
 
 ## 阶段 2：Tool 工具系统
+
+具体会话与验收安排见 [阶段 2: Tool 工具系统学习安排](stage-02-tool-system.md)。
 
 ### 目标
 

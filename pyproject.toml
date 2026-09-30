@@ -7,7 +7,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "smolagents==1.26.0",
+    "smolagents[openai]==1.26.0",
 ]
 
 [build-system]

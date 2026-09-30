@@ -289,11 +289,27 @@ uv run python <脚本路径>
 
 ## 三、画图区: 用户输入到 Agent 最终输出的基本流程
 
-(验收要求之一。用文字或 ASCII 图, 术语与站内文档保持一致: Think / Act / Observe / Model / Tool / Memory / Executor)
+【AI 绘制】以下展示通用 Agent Harness 的一次任务循环。Think 表示 Model 基于当前上下文生成下一步决策; Act 表示 Harness 根据动作调用 Tool; Observe 表示 Harness 将执行结果写入 Memory, 供下一轮 Model 调用使用。
 
+```mermaid
+flowchart TD
+    U["用户任务"] --> R["Runner 初始化任务与 Memory"]
+    R --> C["Context 组装消息与 Tool 描述"]
+    C --> M["Model 决策: Think"]
+    M --> D{"动作类型"}
+    D -->|最终回答| F["Harness 完成收尾并输出结果"]
+    D -->|工具调用| P["Policy 校验工具与参数"]
+    P -->|允许| E["Executor 定位并运行 Tool: Act"]
+    P -->|拒绝| O["记录错误或拒绝结果: Observe"]
+    E --> T["Tool 返回结果或错误"]
+    T --> O
+    O --> S["Memory 保存步骤与观察"]
+    S --> B{"继续执行?"}
+    B -->|继续| C
+    B -->|达到预算或停止条件| F
 ```
 
-```
+`ToolCallingAgent` 的工具调用由 Agent Loop 执行; 图中的 Executor 表示通用 Harness 的动作执行职责。工具返回值和执行错误都进入观察, 下一轮 Model 调用读取更新后的上下文。
 
 ---
 
